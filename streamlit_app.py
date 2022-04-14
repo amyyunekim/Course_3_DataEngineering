@@ -61,6 +61,8 @@ st.write(
 year_to_filter = st.slider('year', 1987, 2020, 2020) 
 filtered_data = center_point_summary[center_point_summary['date'].dt.year == year_to_filter]
 st.subheader(f'Map of all lightning strikes in {year_to_filter}')
+st.write('''Darker points have more lightning days''')
+
 st.map(filtered_data)
 
 # Summary table ################################################
@@ -75,11 +77,7 @@ if st.checkbox('Show raw data'):
 
 #https://github.com/ozgunhaznedar/swiss_renewable_energy_app/blob/main/src/main.py
 
-st.write(
-'''
-## Lightning strikes in 2020 by zipcode
-
-''')
+st.subheader('Lightning strikes in 2020 by zipcode')
 
 fig = go.Figure(
     go.Choroplethmapbox(
@@ -105,7 +103,7 @@ st.plotly_chart(fig)
 
 # Line graph 
 
-st.title("Lightning over time")
+st.subheader("Lightning from 1987 to 2020")
 
 source = zipcode_summary_time
 all_zipcodes = source.zipcode.unique()
