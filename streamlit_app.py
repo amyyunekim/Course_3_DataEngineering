@@ -13,7 +13,7 @@ import numpy as np
 import json
 import plotly.graph_objects as go
 
-from utils import chart,db
+from utils import chart
 
 
 # formatting ###################################################
@@ -106,13 +106,13 @@ st.plotly_chart(fig)
 
 st.title("Lightning over time")
 
-source = zipcode_summary
-all_symbols = source.zipcode.unique()
-symbols = st.multiselect("Choose zipcode to visualize", all_symbols, all_symbols[:3])
+source = zipcode_summary_time
+all_zipcodes = source.zipcode.unique()
+zipcodes = st.multiselect("Choose zipcode to visualize", all_zipcodes, all_zipcodes[:3])
 
 space(1)
 
-source = source[source.symbol.isin(symbols)]
+source = source[source.zipcode.isin(zipcodes)]
 chart = chart.get_chart(source)
 st.altair_chart(chart, use_container_width=True)
 
