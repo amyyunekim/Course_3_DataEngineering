@@ -41,6 +41,7 @@ zipcode_summary_2020 = zipcode_summary.loc[zipcode_summary["year"] == 2020]
 
 zipcode_summary_time=load_data('pipeline/zipcode_summary_time.csv')
 zipcode_summary_time['date']=pd.to_datetime(zipcode_summary_time['date'])
+zipcode_summary_time['zipcode'] = zipcode_summary_time['zipcode'].astype(str)
 
 #load geojson
 with open("ca_california_zip_codes_geo_v2.min.json") as response:

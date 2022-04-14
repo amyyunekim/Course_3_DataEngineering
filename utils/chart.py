@@ -10,13 +10,13 @@ def get_chart(data):
     )
 
     lines = (
-        alt.Chart(data, title="Evolution of stock prices")
+        alt.Chart(data, title="Lightning over time")
         .mark_line()
         .encode(
             x="date",
-            y="price",
-            color="symbol",
-            strokeDash="symbol",
+            y="count_lightning",
+            color="zipcode",
+            strokeDash="zipcode",
         )
     )
 
@@ -29,11 +29,11 @@ def get_chart(data):
         .mark_rule()
         .encode(
             x="date",
-            y="price",
+            y="count_lightning",
             opacity=alt.condition(hover, alt.value(0.3), alt.value(0)),
             tooltip=[
                 alt.Tooltip("date", title="Date"),
-                alt.Tooltip("price", title="Price (USD)"),
+                alt.Tooltip("count_lightning", title="count_lightning"),
             ],
         )
         .add_selection(hover)
