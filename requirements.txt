@@ -1,4 +1,4 @@
-streamlit
+streamlit==0.86.0
 matplotlib
 numpy
 pandas
@@ -8,4 +8,7 @@ google
 datetime
 shapely
 plotly
+altair
+protobuf
+click==8
 

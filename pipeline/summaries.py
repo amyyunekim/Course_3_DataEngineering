@@ -1,11 +1,13 @@
 import pandas as pd
 
 def center_point_summary(gdf):
-    center_point_summary=gdf.groupby(['lat','lon','zipcode','date',])['count_lightning'].sum().reset_index()
-    center_point_summary.to_csv('center_point_summary.csv', index=False)
-    return 
+    summary1=gdf.groupby(['lat','lon','zipcode','date',])['count_lightning'].sum().reset_index()
+    return summary1
 
 def zipcode_summary(gdf):
-    zipcode_summary=gdf.groupby(["zipcode","year"])['count_lightning'].sum().reset_index()
-    zipcode_summary.to_csv('zipcode_summary.csv', index=False)
-    return zipcode_summary
+    summary2=gdf.groupby(["zipcode","year"])['count_lightning'].sum().reset_index()
+    return summary2
+
+def zipcode_summary_time(gdf):
+    summary3=gdf.groupby(["zipcode","date"])['count_lightning'].sum().reset_index()
+    return summary3

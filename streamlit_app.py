@@ -1,10 +1,4 @@
 """
-Streamlit Housing App Demo
-    
-Make sure to install Streamlit with `pip install streamlit`.
-
-Run `streamlit hello` to get started!
-
 To run this app:
 
 1. cd into this directory
@@ -18,6 +12,17 @@ import datetime
 import numpy as np
 import json
 import plotly.graph_objects as go
+
+from utils import chart,db
+
+
+# formatting ###################################################
+
+def space(num_lines=1):
+    """Adds empty lines to the Streamlit app."""
+    for _ in range(num_lines):
+        st.write("")
+
 
 # load data ####################################################
 
@@ -34,23 +39,13 @@ zipcode_summary = load_data('pipeline/zipcode_summary.csv')
 zipcode_summary['zipcode'] = zipcode_summary['zipcode'].astype(str)
 zipcode_summary_2020 = zipcode_summary.loc[zipcode_summary["year"] == 2020]
 
+zipcode_summary_time=load_data('pipeline/zipcode_summary_time.csv')
+zipcode_summary_time['date']=pd.to_datetime(zipcode_summary_time['date'])
+
 #load geojson
-with open("CA_small.geojson") as response:
+with open("ca_california_zip_codes_geo_v2.min.json") as response:
     geo = json.load(response)
 
-
-# Summary table ################################################
-
-st.write(
-'''
-## California Lightning Data
-Summary of lightning strikes by 11km grid centerpoint
-
-''')
-
-if st.checkbox('Show raw data'):
-    st.subheader('Raw data')
-    st.write(center_point_summary)
 
 # map ##########################################################
 
@@ -58,7 +53,7 @@ if st.checkbox('Show raw data'):
 
 st.write(
 '''
-## California Map
+## California Lightning Data
 
 ''')
 
@@ -66,6 +61,14 @@ year_to_filter = st.slider('year', 1987, 2020, 2020)
 filtered_data = center_point_summary[center_point_summary['date'].dt.year == year_to_filter]
 st.subheader(f'Map of all lightning strikes in {year_to_filter}')
 st.map(filtered_data)
+
+# Summary table ################################################
+
+
+if st.checkbox('Show raw data'):
+    st.subheader('Raw data')
+    st.write(center_point_summary)
+
 
 # chloropeth map 
 
@@ -98,3 +101,19 @@ fig.update_layout(margin={"r": 0, "t": 0, "l": 0, "b": 0})
 
 st.plotly_chart(fig)
 
+
+# Line graph 
+
+st.title("Lightning over time")
+
+source = zipcode_summary
+all_symbols = source.zipcode.unique()
+symbols = st.multiselect("Choose zipcode to visualize", all_symbols, all_symbols[:3])
+
+space(1)
+
+source = source[source.symbol.isin(symbols)]
+chart = chart.get_chart(source)
+st.altair_chart(chart, use_container_width=True)
+
+space(2)
