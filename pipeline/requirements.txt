@@ -1,8 +1,0 @@
-matplotlib
-numpy
-pandas
-scikit-learn
-geopandas
-google
-datetime
-shapely

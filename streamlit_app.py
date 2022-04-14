@@ -35,7 +35,7 @@ zipcode_summary['zipcode'] = zipcode_summary['zipcode'].astype(str)
 zipcode_summary_2020 = zipcode_summary.loc[zipcode_summary["year"] == 2020]
 
 #load geojson
-with open("CA_small2.geojson") as response:
+with open("CA_small.geojson") as response:
     geo = json.load(response)
 
 
