@@ -10,5 +10,4 @@ shapely
 plotly
 altair
 protobuf
-click==8
 
