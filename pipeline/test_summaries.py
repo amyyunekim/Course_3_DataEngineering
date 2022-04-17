@@ -2,7 +2,7 @@ from unittest import TestCase
 import unittest
 import datetime
 import pandas as pd
-from summaries import zipcode_summary, zipcode_summary, zipcode_summary_time
+from summaries import zipcode_summary, zipcode_summary_time, yearly_stats, overall_stats
 
 class TestSummaries (unittest.TestCase):
 
@@ -36,3 +36,17 @@ class TestSummaries (unittest.TestCase):
         ])
         actual_output_df= zipcode_summary_time(input_df)
         self.assertEqual(actual_output_df.shape,expected_output_df.shape,msg='Equal')
+
+    def test_stats_maxes_equal(self):
+        input_df=pd.DataFrame([
+        {'zipcode':90027,'city':'LA', 'county':'Los Angeles County','year':	1987,'count_lightning':6},
+        {'zipcode':90027,'city':'LA', 'county':'Los Angeles County','year':	1988,'count_lightning':7},
+        {'zipcode':90027,'city':'LA', 'county':'Los Angeles County','year':	1990,'count_lightning':500}
+        ])
+        output1= yearly_stats(input_df)['max'].max()
+        output2 = overall_stats(input_df)['count_lightning'][3]
+        self.assertEqual(output1,output2,msg='Equal')
+
+
+if __name__ == '__main__':
+    unittest.main()

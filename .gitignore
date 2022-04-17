@@ -6,8 +6,8 @@ Pipeline_diagram.pptx
 CA.geojson
 lightning_CA.csv
 /pipeline/lightning_CA.csv
-pipeline/pipeline_testing1.ipynb
-pipeline/pipeline_testing2.ipynb
+/pipeline/pipeline_testing1.ipynb
+/pipeline/pipeline_testing2.ipynb
 /maps
 /utils/test_utils.ipynb
 /utils/test_utils_lightning.ipynb
