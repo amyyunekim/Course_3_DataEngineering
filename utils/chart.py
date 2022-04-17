@@ -11,12 +11,11 @@ def get_chart(data):
 
     lines = (
         alt.Chart(data, title="Lightning over time")
-        .mark_line()
+        .mark_bar(opacity=0.7)
         .encode(
             x="date",
             y="count_lightning",
-            color="zipcode",
-            strokeDash="zipcode",
+            color="zipcode"
         )
     )
 

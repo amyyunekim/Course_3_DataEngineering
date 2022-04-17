@@ -8,6 +8,7 @@ def create_df():
     SELECT date, 
     zipcode, 
     city, 
+    county,
     state_name as state, 
     number_of_strikes as count_lightning, 
     center_point_geom as center_point

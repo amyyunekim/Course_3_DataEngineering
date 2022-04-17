@@ -14,13 +14,17 @@ def run_pipeline():
     gdf= clean_geo(df)
 
     ## write summaries
-    summary1=center_point_summary(gdf)
-    summary2=zipcode_summary(gdf)
-    summary3=zipcode_summary_time(gdf)
+    summary=zipcode_summary(gdf)
+    graph_data=zipcode_summary_time(gdf)
+    stats1=yearly_stats(summary)
+    stats2=overall_stats(summary)
 
-    summary1.to_csv('center_point_summary.csv', index=False)
-    summary2.to_csv('zipcode_summary.csv', index=False)
-    summary3.to_csv('zipcode_summary_time.csv', index=False)
+
+    ##output to csv
+    summary.to_csv('zipcode_summary.csv', index=False)
+    graph_data.to_csv('zipcode_summary_time.csv', index=False)
+    stats1.to_csv('stats1.csv', index=False)
+    stats2.to_csv('stats2.csv',index=False)
 
 if __name__ == '__main__':
     run_pipeline()
