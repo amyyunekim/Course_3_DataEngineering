@@ -13,7 +13,7 @@ The goal of this project was to create a data storage and processing pipeline to
 
 The pipeline was constructed as shown in the pipeline diagram below:
 
-<img src="./images/pipeline_diagram2.png" width="500">
+<img src="./images/pipeline_diagram2.png" width="700">
 
 The final streamlit app showed 3 different visuals. 
 1. A choropleth map which shows lightning strikes per zipcode with a year slider.
