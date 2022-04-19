@@ -12,7 +12,7 @@ The pipeline remains unchanged and includes:
 
 After creating the pipeline for data acquisition and preprocessing, I deployed a summary using Streamlit:
 
-https://share.streamlit.io/amyyunekim/course_3_data_engineering/main
+https://share.streamlit.io/amyyunekim/course_3_dataengineering/main
 
 
 <img src="./images/lightning_summary.png" width="500">

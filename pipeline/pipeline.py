@@ -13,7 +13,7 @@ def run_pipeline():
     df=clean_dates(df)
     gdf= clean_geo(df)
 
-    ## write summaries
+    ## write summaries & stats
     summary=zipcode_summary(gdf)
     graph_data=zipcode_summary_time(gdf)
     stats1=yearly_stats(summary)

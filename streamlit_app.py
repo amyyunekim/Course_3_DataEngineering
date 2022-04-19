@@ -60,7 +60,7 @@ st.write(
 
 #https://github.com/ozgunhaznedar/swiss_renewable_energy_app/blob/main/src/main.py
 
-st.subheader('Lightning strikes by zipcode')
+st.subheader('Yearly lightning strikes by zipcode')
 
 year_to_filter = st.slider('year', 1987, 2020, 2020) 
 filtered_data = zipcode_summary[zipcode_summary['year'] == year_to_filter]
@@ -93,15 +93,13 @@ mean = stats2['count_lightning'][0]
 std  = stats2['count_lightning'][1]
 max  = stats2['count_lightning'][3]
 
-if st.checkbox('Show extra stats '):
+#if st.checkbox('Show extra stats '):
 
-    st.subheader('Yearly average from 1987 to 2020 by zipcode')
-
-    st.write(f'Mean: {mean}')
-    st.write(f'Standard Deviation: {std}')
-    st.write(f'Max: {max}')
-
-    st.write(stats1[['rank','zipcode','county','mean','std','min','max']])
+st.subheader('Yearly lightning strike statistics')
+st.write(f'Mean: {mean}')
+st.write(f'Standard Deviation: {std}')
+st.write(f'Max: {max}')
+st.write(stats1[['rank','zipcode','county','mean','std','min','max']])
     
 
 space(1)
@@ -110,7 +108,7 @@ space(1)
 
 #https://share.streamlit.io/streamlit/example-app-commenting/main
 
-st.subheader("Lightning from 1987 to 2020")
+st.subheader("Daily lightning strikes from 1987 to 2020")
 
 source = zipcode_summary_time
 all_zipcodes = source.zipcode.unique()

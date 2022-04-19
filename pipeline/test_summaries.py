@@ -6,6 +6,8 @@ from summaries import zipcode_summary, zipcode_summary_time, yearly_stats, overa
 
 class TestSummaries (unittest.TestCase):
 
+    #received help setting up in metis class hours
+
     def test_zipcode_summary(self):
         input_df=pd.DataFrame([
         {'zipcode':12345,'city':'ABC','county':'County1','year':'1234','count_lightning':3},
