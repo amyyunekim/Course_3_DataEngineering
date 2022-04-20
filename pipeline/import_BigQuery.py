@@ -4,7 +4,7 @@ import pandas as pd
 from google.cloud import bigquery 
 
 ##input credentials
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="/Users/amykim/Documents/Metis/Course_3_Engineering/Project/BigQuery/data-engineering-345807-a02ba30a47dd.json"
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="/Users/amykim/Documents/Metis/Course_3_Engineering/App/BigQuery/data-engineering-345807-a02ba30a47dd.json"
 client = bigquery.Client()
 
 def get_data():
@@ -12,7 +12,7 @@ def get_data():
 
     SELECT * FROM `bigquery-public-data.utility_us.zipcode_area` z,`bigquery-public-data.noaa_lightning.lightning_*` l 
         WHERE ST_CONTAINS(ST_GeogFromText(z.zipcode_geom) , l.center_point_geom) and state_name = 'California'
-        limit 30
+ 
     ''')
 
     query_job = client.query(QUERY)  # API request
